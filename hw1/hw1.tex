@@ -14,6 +14,7 @@
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Hom}{\mathrm{Hom}}
 
 \theoremstyle{plain}
 \newtheorem{problem}{Problem}
@@ -31,7 +32,59 @@
 \end{problem}
 
 \begin{proof}
-  
+  Let $f:A\rightarrow B$ be an $R$-module homomorphism and let $H$ be a fixed
+  $R$-module with a projective resolution $P$:
+  \[
+    \xymatrix{
+      \cdots \ar[r] & P_2 \ar[r]^{f_2}& P_1 \ar[r]^{f_1} & P_0 \ar[r]^{f_0} & H \ar[r] & 0
+    }
+  \]
+  Then apply $\Hom_R(H,-)$ with both $A$ and $B$ and to $f$ for each entry in
+  the exact sequence for the projective resolution. This gives us two chain
+  complexes with a map at each group
+  \[
+    \xymatrix{
+      \cdots & \ar[l] P_2^A \ar[d]^{g_2^*}& \ar[l]_{f_2^A} P_1^A \ar[d]^{g_1^*}& \ar[l]_{f_1^A} P_0 \ar[d]^{g_0^*}& \ar[l]_{f_0^A} H^A\ar[d]^{g^*} & \ar[l] 0\\
+      \cdots & \ar[l] P_2^B & \ar[l]_{f_2^B} P_1^B & \ar[l]_{f_1^B} P_0 & \ar[l]_{f_0^B} H^B & \ar[l] 0
+    }
+  \]
+  where $H^A:=\Hom_R(H,A)$ and $g^*:\Hom_R(H,A)\rightarrow\Hom_R(H,B)$.
+
+  Now we will show that $g_i^*$ forms a chain map. However if we write it out we
+  get
+  \begin{align*}
+    f_n^B\circ g_n^*(h)&=g_{n+1}^*\circ f_n^A(h)\\
+    f_n^B(g\circ h) &= g_{n+1}^*(h\circ f_n)\\
+    (g\circ h)\circ f_n &= g\circ(h\circ f_n)\\
+  \end{align*}
+  which are equal by associativity of function composition. Since
+  this is a chain map this induces a homomorphism on homology which
+  is exactly $\Ext(H,A)\xrightarrow{g_*}\Ext(H,B)$. This will preserve
+  composition since we are sending functions to functions. Therefore
+  $\Ext(H,-)$ is a covariant functor.
+
+  To show that $\Ext(-,G)$ is a contravariant functor we trace out the
+  procedure gone through in class. Let $A$ and $B$ be $R$-modules with
+  projective resolutions $P$ and $Q$ respectively. Let $f:A\rightarrow B$ be an
+  $R$-module homomorphism. Then extend $f$ to a chain map $\alpha$ in the form
+  \[
+    \xymatrix{
+      \cdots \ar[r] & P_2 \ar[r]^{\partial^A_2} \ar[d]^{\alpha_2}& P_1 \ar[r]^{\partial^A_1} \ar[d]^{\alpha_1}& P_0 \ar[r]^{\partial^A_0} \ar[d]^{\alpha_0}& A \ar[r] \ar[d]^f & 0\\
+      \cdots \ar[r] & Q_2 \ar[r]^{\partial^B_2}& Q_1 \ar[r]^{\partial^B_1} & Q_0 \ar[r]^{\partial^B_0} & B \ar[r] & 0\\
+    }
+  \]
+  Then we dualize with $\Hom(-,G)$ giving us two chain complexes with a chain
+  map $\alpha^*$
+  \[
+    \xymatrix{
+      \cdots  & P_2^* \ar[l]^{\partial^A_2} & P_1^* \ar[l]^{\partial^A_1}& P_0 \ar[l]^{\partial^A_0} & A \ar[l]  & \ar[l]0\\
+      \cdots  & Q_2 \ar[l]^{\partial^B_2}\ar[u]^{\alpha_2^*} & Q_1 \ar[u]^{\alpha_1^*} \ar[l]^{\partial^B_1} & Q_0 \ar[u]^{\alpha_0^*} \ar[l]^{\partial^B_0} & B \ar[u]^{f^*}\ar[l] & \ar[l]0\\
+    }
+  \]
+  We showed in class that $\alpha^*$ is in fact a chain map for the new complexes. As
+  such it induces a homomorphism on homology which is 
+  $g_*:\Ext(B,G)\rightarrow\Ext(A,G)$. This shows that $\Ext(-,G)$ is indeed a contravariant
+  functor as composition is preserved for the same reason as above.
 \end{proof}
 
 \sk
@@ -42,7 +95,48 @@
 \end{problem}
 
 \begin{proof}
-  
+  Let $A$ be a generating set for $G$. Then we have a free resolution of
+  $G$ of the form
+  \[
+    \xymatrix{
+      0 \ar[r] & \ker(f) \ar[r]^i & F(A) \ar[r]^f & G \ar[r] & 0\\ 
+    }
+  \]
+  where $i$ is inclusion, $f$ is the evaluation map, and $F(A)$ is the
+  free group on $A$. Fortunately the map that multiplies by $n$ has a lift
+  where it is also multiplication by $n$. Thus we have
+  \[
+    \xymatrix{
+      0 \ar[r] & \ker(f) \ar[r]^i \ar[d]^n & F(A) \ar[r]^f \ar[d]^n & G \ar[r] \ar[d]^n & 0\\
+      0 \ar[r] & \ker(f) \ar[r]^i & F(A) \ar[r]^f & G \ar[r] & 0\\ 
+    }
+  \]
+
+  Then we dualize to get
+  \[
+    \xymatrix{
+      0 & \ker(f)^* \ar[l] & F(A) \ar[l]_{i^*} & G^* \ar[l]_{f^*} & \ar[l] 0\\
+      0 & \ker(f)^* \ar[l] \ar[u]_{n^*} & F(A)^* \ar[l]_{i^*} \ar[u]_{n^*} & G^* \ar[l]_{f^*} \ar[u]_{n^*} & \ar[l] 0\\ 
+    }
+  \]
+
+  Now we need to know what the $n^*$ maps are. However as it turns out if we
+  have a map in one of the groups in the above diagram $h$. Then
+  $n^*(h)(x)=h(nx)=nh(x)$ which implies that $n^*$ is once again the multiplication
+  by $n$ map. Since it is the multiplication map everywhere the induced map on
+  homology will also be the multiplication by $n$ map. Thus $\Ext(-,H)(\cdot n)=\cdot n$.
+
+  Similarly if we use $\Ext(G,-)$ we dualize first and then place the $n^*$ maps in.
+  However since these maps are endomorphisms we get the same diagram
+
+  \[
+    \xymatrix{
+      0 & \ker(f)^* \ar[l] \ar[d]^{n^*}& F(A)^* \ar[l]_{i^*} \ar[d]^{n^*}& G^* \ar[l]_{f^*} \ar[d]^{n^*}& \ar[l] 0\\
+      0 & \ker(f)^* \ar[l] & F(A)^* \ar[l]_{i^*} & G^* \ar[l]_{f^*} & \ar[l] 0\\ 
+    }
+  \]
+
+  which must have the same then induce the same maps giving $\Ext(G,-)(\cdot n)=\cdot n$
 \end{proof}
 
 \sk
@@ -53,9 +147,22 @@
   that $\Ext_{\bb{Z}_4}^n(\bb{Z}_2,\bb{Z}_2)$ is nonzero for all $n$.
 \end{problem}
 
-\begin{proof}
-  
-\end{proof}
+We can construct a free resolution of $\bb{Z}_2$ of the form
+\[
+  \xymatrix{
+    \cdots \ar[r] & \bb{Z}_4 \ar[r]^2 & \bb{Z}_4 \ar[r]^2 & \bb{Z}_4 \ar[r]^-{\mod 2} & \bb{Z}_2 \ar[r] & 0
+  }
+\]
+
+When we dualize with $\Hom(-,\bb{Z}_2)$ we get
+\[
+  \xymatrix{
+    \cdots & \bb{Z}_0 \ar[l]_0 & \bb{Z}_2 \ar[l]_0 & \bb{Z}_2 \ar[l]_0 & \bb{Z}_2 \ar[l]_0 & \ar[l] 0
+  }
+\]
+
+Which has nonzero homology groups everywhere. As such $\Ext_{\bb{Z}_4}^n(\bb{Z}_2,\bb{Z}_2)$
+is nonzero for all $n$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
