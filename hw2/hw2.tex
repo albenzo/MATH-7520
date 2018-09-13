@@ -13,6 +13,10 @@
 \newcommand{\sk}{\vskip 10mm}
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\ra}{\rightarrow}
+\newcommand{\rH}{\widetilde{H}}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
 
 \theoremstyle{plain}
 \newtheorem{problem}{Problem}
@@ -30,9 +34,221 @@
   $\Delta$-complex structure given in $\S 2.1$.
 \end{problem}
 
-\begin{proof}
-  
-\end{proof}
+Using the given structure we have for our chain complex
+\[
+  \xymatrix{
+    0 \ar[r] & C_2=\langle U,L\rangle \ar[r] & C_1=\langle a,b,c\rangle \ar[r] & C_0=\langle v\rangle \ar[r] & 0
+  }
+\]
+
+The value of the boundary map on each of these simplices with $\bb{Z}_2$
+coefficients
+\begin{align*}
+  \partial U&= a+b-c\\
+  \partial L&= a+b-c\\
+  \partial a&= 0\\
+  \partial b&= 0\\
+  \partial c&= 0\\
+  \partial v&= 0\\
+\end{align*}
+
+When we dualize the complex we get
+\[
+  \xymatrix{
+    0 & \ar[l]_{\delta_2} C^2 & \ar[l]_{\delta_1} C^1 & \ar[l]_{\delta_0} C^0 & \ar[l] 0
+  }
+\]
+For each group in the dual complex there are $2^{|C_n|}$ maps determined
+by where they send the generators. The maps that generate each are
+\begin{align*}
+  C^0 &=
+       \left\langle
+       \left(
+       \begin{array}{c}
+         v\\
+         1
+       \end{array}
+  \right)
+  \right\rangle\\
+  C^1 &=
+       \left\langle
+       \left(
+       \begin{array}{ccc}
+         a & b & c\\
+         1 & 0 & 0
+       \end{array}
+                 \right),
+                 \left(
+                 \begin{array}{ccc}
+                   a & b & c\\
+                   0 & 1 & 0
+                 \end{array}
+                           \right),
+                           \left(
+                           \begin{array}{ccc}
+                             a & b & c\\
+                             0 & 0 & 1
+                           \end{array}
+                                     \right)
+                                     \right\rangle\\
+  C^2 &=
+       \left\langle
+       \left(
+       \begin{array}{cc}
+         U & L\\
+         1 & 0\\
+       \end{array}
+  \right),
+  \left(
+  \begin{array}{cc}
+    U & L\\
+    0 & 1
+  \end{array}
+        \right)
+        \right\rangle\\
+\end{align*}
+
+For $H^0(T^2;\bb{Z}_2)$ we need $\ker\delta_0$. However since $\partial$ is the zero map
+out of $C_1$ so will be $\delta_0$. As such $H^0(T^2;\bb{Z}_2)\cong\bb{Z}_3$.
+
+For $H^1(T^2;\bb{Z}_2)$ the image of $\delta_0$ is trivial. However for $\ker\delta_1$
+this will be exactly the maps that send two generators to $1$ and the zero
+map. As such we have
+\[
+  \ker\delta_1 =
+  \left\langle
+    \left(
+      \begin{array}{ccc}
+        a & b & c\\
+        1 & 1 & 0
+      \end{array}
+    \right),
+    \left(
+      \begin{array}{ccc}
+        a & b & c\\
+        0 & 1 & 1
+      \end{array}
+    \right),
+    \left(
+      \begin{array}{ccc}
+        a & b & c\\
+        1 & 0 & 1
+      \end{array}
+    \right)
+  \right\rangle\\
+  =
+  \left\langle
+    \left(
+      \begin{array}{ccc}
+        a & b & c\\
+        1 & 0 & 1
+      \end{array}
+    \right),
+    \left(
+      \begin{array}{ccc}
+        a & b & c\\
+        1 & 1 & 0
+      \end{array}
+    \right)
+  \right\rangle\\
+\]
+
+Which gives us that $H^1(T^2;\bb{Z}_2)=\bb{Z}_2\oplus\bb{Z}_2$.
+
+Finally for $H^2(T^2;\bb{Z}_2)$ the kernel of $\delta_2$ is everything. As such
+the only thing we need to determine is the image of $\delta_1$.
+\begin{align*}
+  \img \delta_2 &=
+                  \left\langle\delta_2
+                  \left(
+                  \begin{array}{ccc}
+                    a & b & c\\
+                    1 & 0 & 0
+                  \end{array}
+                            \right),\delta_2
+                            \left(
+                            \begin{array}{ccc}
+                              a & b & c\\
+                              0 & 1 & 0
+                            \end{array}
+                                      \right),\delta_2
+                                      \left(
+                                      \begin{array}{ccc}
+                                        a & b & c\\
+                                        0 & 0 & 1
+                                      \end{array}
+                                                \right)
+                                                \right\rangle\\
+                &=
+                  \left\langle
+                  \left(
+                  \begin{array}{ccc}
+                    a & b & c\\
+                    1 & 0 & 0
+                  \end{array}
+                            \right)\circ\partial,
+                            \left(
+                            \begin{array}{ccc}
+                              a & b & c\\
+                              0 & 1 & 0
+                            \end{array}
+                                      \right)\circ\partial,
+                                      \left(
+                                      \begin{array}{ccc}
+                                        a & b & c\\
+                                        0 & 0 & 1
+                                      \end{array}
+                                                \right)\circ\partial
+                                                \right\rangle\\
+                &=
+                  \left\langle
+                  \left(
+                  \begin{array}{cc}
+                    U&L\\
+                    1&1\\
+                  \end{array}
+  \right)
+  \right\rangle
+\end{align*}
+
+Which gives us
+\[
+  H^2(T^2;\bb{Z}_2)\cong 
+  \left\langle
+    \left(
+      \begin{array}{cc}
+        U&L\\
+        1&0
+      \end{array}
+    \right),
+    \left(
+      \begin{array}{cc}
+        U&L\\
+        1&0
+      \end{array}
+    \right)
+  \right\rangle
+  /
+  \left\langle
+    \left(
+      \begin{array}{cc}
+        U&L\\
+        1&0\\
+      \end{array}
+    \right)
+    +
+    \left(
+      \begin{array}{cc}
+        U&L\\
+        0&1\\
+      \end{array}
+    \right)
+  \right\rangle
+  \cong \bb{Z}_2
+\]
+
+All other cohomology groups are zero since there are no simplices
+of dimension higher than two.
 
 \sk
 
@@ -42,7 +258,74 @@
 \end{problem}
 
 \begin{proof}
+  First note that $H^0(S^0;G)\cong G\oplus G$ and in particular $\rH^0(S^0;G)\cong G$ with
+  $\rH^k(S^0;G)=0$ for all $k>0$.
   
+  We start by using the long exact sequence of the pair in relative
+  cohomology using $(D^n,\partial D^n=S^{n-1})$, so $D^n/\partial D^n=S^n$,  slightly thickening
+  the boundary so we have a proper excisive couple. Assume that
+  $\rH^{n-1}(S^{n-1};G)\cong G$ and that $\rH^k(S^{n-1};G)=0$ for $k\neq n-1$. Now we
+  deduce the reduced cohomology of the $n$-sphere.
+
+  For general $k$ we have
+  \[
+    \xymatrix{
+      \cdots \ar[r] & \rH^k(S^n;G)\ar[r] & \rH^k(D^n;G)\ar[r] & \rH^k(S^{n-1};G) \ar[r] & \cdots      
+    }
+  \]
+
+  For $k\neq n$ this sequence will look like
+  \[
+    \xymatrix{
+      \rH^{k-1}(S^{n-1};G)=0 \ar[r] & \rH^k(S^n;G) \ar[r] & 0=\rH^k(D^n;G)
+    }
+  \]
+  forcing $\rH^k(S^n;G)= 0$ for $k\neq n$. However when $k=n$ we have
+  \[
+    \xymatrix{
+      \rH^{n-1}(D^n;G)=0\ar[r] & \rH^{n-1}(S^{n-1};G)\cong G \ar[r] & \rH^n(S^n;G) \ar[r] & 0=\rH^n(D^n;G)
+    }
+  \]
+  Which gives an isomorphism $\rH^{n-1}(S^{n-1};G)\cong\rH^n(S^n;G)\cong G$.
+
+  \sk
+
+  Next we'll prove the same fact using the Mayer-Vietoris sequence. Break
+  up $S^n$ as two copies of $D^n$ with intersection $S^{n-1}$. As before
+  assume that $\rH^{n-1}(S^{n-1};G)\cong G$ and $\rH^k(S^{n-1};G)\cong 0$ for $n\neq k$.
+
+  The Mayer-Vietoris sequence with the above decomposition will be
+  \[
+    \xymatrix{
+      \cdots \ar[r] & \rH^k(S^n;G) \ar[r] & \rH^k(D^n;G)\oplus\rH^k(D^n;G) \ar[r] & \rH^k(S^{n-1};G) \ar[r] & \cdots
+    }
+  \]
+
+  Similarly when $n\neq k$ we get
+  \[
+    \xymatrix{
+      \rH^{k-1}(S^{n-1};G)=0 \ar[r] & \rH^k(S^n;G) \ar[r] & 0=\rH^k(D^n;G)\oplus\rH^k(D^n;G)
+    }
+  \]
+  Once again forcing $\rH^k(S^n;G)=0$ for $n\neq k$. However if $n=k$ we instead get
+  \[
+    \xymatrix{
+     \rH^{n-1}(D^n;G)\oplus\rH^{n-1}(D^n;G)=0 \ar[r] & \rH^{n-1}(S^{n-1};G)\cong G \ar[r] & \rH^n(S^n;G) \ar[r] & 0=\rH^{n}(D^n;G)\oplus\rH^{n}(D^n;G)
+    }
+  \]
+  This gives an isomorphism $\rH^{n-1}(S^{n-1};G)\cong\rH^n(S^n;G)\cong G$.
+
+  From both the above arguments we have determined the reduced cohomology
+  of the $n$-sphere and from this we can see that
+  \[
+    H^k(S^n;G)\cong 
+    \left\{
+      \begin{array}{lr}
+        G& k=0,n\\
+        0& \text{otherwise}
+      \end{array}
+    \right.
+  \]
 \end{proof}
 
 \sk
@@ -53,8 +336,31 @@
 \end{problem}
 
 \begin{proof}
-  
+  Let $f:S^n\rightarrow S^n$ be a map of degree $d$. From Hatcher page 196 we have a
+  commutative diagram of the form
+  \[
+    \xymatrix{
+      0 \ar[r] & \Ext(H_{n-1}(S^n),G)\ar[r] & H^n(S^n;G) \ar[r]^-h & \Hom(H_n(S^n),G) \ar[r] & 0\\
+      0 \ar[r] & \Ext(H_{n-1}(S^n),G)\ar[r]\ar[u]^{(f_*)^*} & H^n(S^n;G) \ar[r]^-h\ar[u]^{f^*} & \Hom(H_n(S^n),G) \ar[r]\ar[u]^{(f_*)^*} & 0
+    }
+  \]
+
+  Note however that since $H_{n-1}(S^n)=0$ that we also have $\Ext(H_{n-1}(S^n),G)=0$.
+  This implies that $h$ is an isomorphism. Moreover we know that $f_*$ on
+  the right is multiplication by $d$ as $f$ has degree $d$. Since the hom
+  dual of a multiplication map is the same map back we get
+  \[
+    \xymatrix{
+      0 \ar[r] & H^n(S^n;G) \ar[r]^-h & \Hom(H_n(S^n),G) \ar[r] & 0\\
+      0 \ar[r] & H^n(S^n;G) \ar[r]^-h\ar[u]^{f^*} & \Hom(H_n(S^n),G) \ar[r]\ar[u]^{\cdot d} & 0
+    }
+  \]
+  as our new commutative diagram. However at this point it is clear that $f^*$ must
+  also be multiplication by $d$.
+
+  Therefore if a map has degree $d$ then the induced map on cohomology is
+  multiplication by $d$.
 \end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \end{document}
