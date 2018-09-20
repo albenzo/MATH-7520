@@ -18,11 +18,11 @@
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Hom}{Hom}
 
-\theoremstyle{plain}
+\theoremstyle{remark}
 \newtheorem{problem}{Problem}
 \newtheorem{lemma}{Lemma}[problem]
 
-\theoremstyle{remark}
+
 \newtheorem{tpart}{}[problem]
 \newtheorem*{ppart}{}
 
@@ -37,7 +37,148 @@
 \end{problem}
 
 \begin{proof}
-  
+  We know Hatcher that the cellular chain complex for a lens space
+  $L_m(\ell_1,\ldots,l_n)$ is
+  \[
+    \xymatrix{
+      0 \ar[r] & \bb{Z} \ar[r]^0 & \bb{Z} \ar[r]^m & \bb{Z} \ar[r]^0 & \cdots \ar[r]^0 & \bb{Z} \ar[r]^m & \bb{Z} \ar[r]^0 & \bb{Z} \ar[r] & 0
+    }
+  \]
+
+  Where there are $2n-1$ copies of $\bb{Z}$ in the above complex.
+  We also know that the cellular cochain complex is isomorphic to the hom dual
+  of the cellular cochain complex. Moreover $\Hom(\bb{Z},A)\cong A$, determined by
+  where the generators are sent, and $\Hom(\bb{Z},-)(\cdot m)=\cdot m$. We know look
+  at the cellular cochain complex for each of the listed groups in turn.
+
+  \begin{itemize}
+  \item[$\bb{Z}$:] From the above information we know that cellular cochain
+    complex for $\bb{Z}$ will in fact be almost exactly the same as the cellular chain complex
+    \[
+      \xymatrix{
+        0 \ar[r] & \bb{Z} \ar[r]^0 & \bb{Z} \ar[r]^m & \bb{Z} \ar[r]^0 & \cdots \ar[r]^0 & \bb{Z} \ar[r]^m & \bb{Z} \ar[r]^0 & \bb{Z} \ar[r] & 0
+      }
+    \]
+    Thus the cohomology groups of the lens space with integer coefficients
+    will be isomorphic to the homology groups with a switch from $k$ odd to $k$ even
+    \[
+      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}) \cong  
+      \left\{
+        \begin{array}{ll}
+          \bb{Z}& k=0,2n-1\\
+          \bb{Z}_m& 0<k<2n-1,\ \text{$k$ even}\\
+          0 & \text{otherwise}
+        \end{array}
+      \right.
+    \]
+  \item[$\bb{Q}$:] With rational coefficients the cellular cochain complex will
+    be of the form
+    \[
+      \xymatrix{
+        0 \ar[r] & \bb{Q} \ar[r]^0 & \bb{Q} \ar[r]^m & \bb{Q} \ar[r]^0 & \cdots \ar[r]^0 & \bb{Q} \ar[r]^m & \bb{Q} \ar[r]^0 & \bb{Q} \ar[r] & 0
+      }
+    \]
+
+    It's clear from this that for $k=2n-1,0$ that the cohomology will be $\bb{Q}$. The
+    other cases are either an $\cdot m$ leaving and a $0$ map entering, or vice versa.
+    In the prior case the kernel is trivial and in the latter case the image equals the
+    kernel. Either way the cohomology will be zero. Thus the cohomology for the lens
+    space with rational coefficients will be
+    \[
+      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Q}) \cong  
+      \left\{
+        \begin{array}{ll}
+          \bb{Q} & k=2n-1,0\\
+          0 & \text{otherwise}
+        \end{array}
+      \right.
+    \]
+  \item[$\bb{Z}_m$:] Under $\bb{Z}_m$ the map that multiplies by $m$ gives us
+    the zero map. As such the cellular cochain complex will be
+    \[
+      \xymatrix{
+        0 \ar[r] & \bb{Z}_m \ar[r]^0 & \bb{Z}_m \ar[r]^0 & \bb{Z}_m \ar[r]^0 & \cdots \ar[r]^0 & \bb{Z}_m \ar[r]^0 & \bb{Z}_m \ar[r]^0 & \bb{Z}_m \ar[r] & 0
+      }
+    \]
+    Since the kernel is always $\bb{Z}_m$ and the image the identity we then have that
+
+    \[
+      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}_m) \cong  
+      \left\{
+        \begin{array}{ll}
+          \bb{Z}_m & 0\leq k < 2n-1\\
+          0 & \text{otherwise}
+        \end{array}
+      \right.
+    \]
+  \item[$\bb{Z}_p$:]
+    Dualizing with $\bb{Z}_p$ gives us the cellular cochain complex
+    \[
+      \xymatrix{
+        0 \ar[r] & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \cdots \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r] & 0
+      }
+    \]
+
+    Then we need to consider the case where $p|m$ and when $p\nmid m$.
+
+    When $p|m$ the map $\cdot m$ becomes the zero map. As such we end up
+    with cohomology analagous to the $\bb{Z}_m$ case
+
+    \[
+      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}_p) \cong  
+      \left\{
+        \begin{array}{ll}
+          \bb{Z}_p & 0\leq k<2n-1\\
+          0 & \text{otherwise}
+        \end{array}
+      \right.
+    \]
+
+    However if $p\nmid m$. Then the map $\cdot m$ is invertible and as such an
+    isomorphism. This makes it analagous to the $\bb{Q}$ case
+
+    \[
+      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}_p) \cong  
+      \left\{
+        \begin{array}{ll}
+          \bb{Z}_p & k=0,2n-1\\
+          0 & \text{otherwise}
+        \end{array}
+      \right.
+    \]
+  \end{itemize}
+
+  Now we check our work with the universal coefficient theorem. The
+  short exact sequence that we will be using is
+  \[
+    \xymatrix{
+      0 \ar[r] & \Ext(H_k(L),G) \ar[r] & H^k(L;G) \ar[r] & \Hom(H_k(L),G) \ar[r] & 0
+    }
+  \]
+
+  If $k=2n-1,0$ we get
+  \[
+    \xymatrix{
+      0 \ar[r] & \Ext(0,G)=0 \ar[r] & H^k(L;G) \ar[r] & \Hom(\bb{Z},G)=\bb{Z} \ar[r] & 0
+    }
+  \]
+  which provides $H^{2n-1}(L;G)\cong H^0(L;G)\cong G$ as expected.
+
+  Next if $0<k<2n-1$ and $k$ even we break into cases:
+  \begin{itemize}
+  \item[$\bb{Z}$:]
+  \item[$\bb{Q}$:]
+  \item[$\bb{Z}_m$:]
+  \item[$\bb{Z}_p$:]
+  \end{itemize}
+
+  Finally if $0<k<2n-1$ and $k$ odd we break into the same cases as before:
+  \begin{itemize}
+  \item[$\bb{Z}$:]
+  \item[$\bb{Q}$:]
+  \item[$\bb{Z}_m$:]
+  \item[$\bb{Z}_p$:]
+  \end{itemize}
 \end{proof}
 
 \sk
@@ -56,8 +197,40 @@
 \end{problem}
 
 \begin{proof}
-  
+  \begin{itemize}
+  \item[(a)]  We can deduce that the map induced by $q:X\rightarrow S^{n+1}$ is the trivial on homology
+    since $\rH_k(X)\cong 0$ for $k\neq n$ implies that it can only be the zero map and for
+    $k=n$ we have $q_*:\bb{Z}_m\rightarrow (H_n(S^{n+1})=0)$.
+
+    Using the universal coefficient theorem we can calculate the cohomology of
+    $X$ with $\bb{Z}$ coefficients. It is clear that $\rH^k(X;\bb{Z})\cong 0$ when
+    $k\neq n+1$ as both $\Hom$ and $\Ext$ will be zero in the universal coefficient
+    theorem. However when $k=n+1$
+    \[
+      \xymatrix{
+        0 \ar[r] & \Ext(H_{n}(X)\cong \bb{Z}_m,\bb{Z})\cong \bb{Z}_m \ar[r] & H^{n+1}(X) \ar[r] & \Hom(H_{n+1}(X)\cong 0,\bb{Z})\cong 0 \ar[r] & 0\\
+      }
+    \]
+    Giving us that $H^{n+1}(X)\cong \bb{Z}_m$. From the same reasoning as before we know
+    that the induced map $q^*:\rH^k(S^{n+1})\rightarrow\rH^k(X;\bb{Z})$ will be the zero map
+    for $k\neq n+1$. When $k=n+1$ if we look at $q_{\#}$ on the chain level it
+    will send the $e^{n+1}$ cell of $X$ to the $e^{n+1}$ cell for $S^{n+1}$. As
+    such when we look at the induced map $q^*:\rH^{n+1}(S^{n+1})=\bb{Z}\rightarrow \rH^{n+1}(X)=\bb{Z}_m$
+    it will send the generator of the former to the generator of the latter. As
+    such the map $q^*$ is not trivial on cohomology when $k=n$.
+
+    \textbf{Say why this shows the universal coefficient theorem does not split
+    naturally.}
+\item[(b)] For the same reason as $q_*$ being trivial on reduced homology above, $i^*$
+  will be trivial on reduced cohomology since there are no groups that are nonzero
+  for the same index.
+
+  However when it comes to reduced homology when $k=n$ the induced map $i_*$
+  will map the generator of $\rH_n(S^n)=\bb{Z}$ to the generator of the reduced
+  homology of $X$ which is also a copy of $S^n$. As such $i_*(k)=k\mod m$
+  on the $n$th homology group.
+  \end{itemize}
 \end{proof}
 
 \end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
