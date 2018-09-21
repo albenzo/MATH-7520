@@ -50,7 +50,7 @@
   Where there are $2n-1$ copies of $\bb{Z}$ in the above complex.
   We also know that the cellular cochain complex is isomorphic to the hom dual
   of the cellular cochain complex. Moreover $\Hom(\bb{Z},A)\cong A$, determined by
-  where the generators are sent, and $\Hom(\bb{Z},-)(\cdot m)=\cdot m$. We know look
+  where the generators are sent, and $\Hom(\bb{Z},-)(\cdot m)=\cdot m$. Now we look
   at the cellular cochain complex for each of the listed groups in turn.
 
   \begin{itemize}
@@ -117,7 +117,7 @@
     Dualizing with $\bb{Z}_p$ gives us the cellular cochain complex
     \[
       \xymatrix{
-        0 \ar[r] & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \cdots \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r] & 0
+        0 \ar[r] & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r]^m & \bb{Z}_p \ar[r]^0 & \cdots \ar[r]^0 & \bb{Z}_p \ar[r]^m & \bb{Z}_p \ar[r]^0 & \bb{Z}_p \ar[r] & 0
       }
     \]
 
@@ -162,7 +162,7 @@ short exact sequence that we will be using is
 If $k=2n-1,0$ we get
 \[
   \xymatrix{
-    0 \ar[r] & \Ext(0,G)\cong 0 \ar[r] & H^k(L;G) \ar[r] & \Hom(\bb{Z},G)\cong \bb{Z} \ar[r] & 0
+    0 \ar[r] & \Ext(0,G)\cong 0 \ar[r] & H^k(L;G) \ar[r] & \Hom(\bb{Z},G)\cong G \ar[r] & 0
   }
 \]
 which provides $H^{2n-1}(L;G)\cong H^0(L;G)\cong G$ as expected.
@@ -170,7 +170,7 @@ which provides $H^{2n-1}(L;G)\cong H^0(L;G)\cong G$ as expected.
 Next if $0<k<2n-1$ and $k$ even we start with
 \[
   \xymatrix{
-    0 \ar[r] &pp \Ext(\bb{Z}_m,G)\ar[r] & H^k(L;G) \ar[r] & \Hom(0,G)\cong 0 \ar[r] & 0
+    0 \ar[r] & \Ext(\bb{Z}_m,G)\ar[r] & H^k(L;G) \ar[r] & \Hom(0,G)\cong 0 \ar[r] & 0
   }
 \]
 Then $\Ext(\bb{Z}_m,G)\cong H^k(L;G)$. Split into cases and we get
@@ -233,7 +233,7 @@ giving $H^k(L;G)\cong\Hom(\bb{Z}_m,G)$. Split into the same cases as above to ge
     will send the $e^{n+1}$ cell of $X$ to the $e^{n+1}$ cell for $S^{n+1}$. As
     such when we look at the induced map $q^*:\rH^{n+1}(S^{n+1})=\bb{Z}\rightarrow \rH^{n+1}(X)=\bb{Z}_m$
     it will send the generator of the former to the generator of the latter. As
-    such the map $q^*$ is not trivial on cohomology when $k=n$.
+    such the map $q^*$ is not trivial on cohomology when $k=n+1$.
 
     Using the commutative diagram from pg. 196 of Hatcher we have
     \[
@@ -251,7 +251,7 @@ giving $H^k(L;G)\cong\Hom(\bb{Z}_m,G)$. Split into the same cases as above to ge
       }
     \]
 
-    From splitting we get a map from $0\rightarrow \bb{Z}_m$ and a map $\bb{Z}\rightarrow\bb{Z}$ going back. If
+    From splitting we get a map from $0\rightarrow \bb{Z}_m$ and a map $\bb{Z}\rightarrow\bb{Z}$ going left. If
     the splitting was natural this would give us commutativity in
     \[
       \xymatrix{
@@ -260,11 +260,11 @@ giving $H^k(L;G)\cong\Hom(\bb{Z}_m,G)$. Split into the same cases as above to ge
       }
     \]
 
-    However this is not the case. Thus the splitting for the universal coefficient
-    theorem is not natural.
+    However this is not the case as $q^*$ is not the zero map in this diagram.
+    Thus the splitting for the universal coefficient theorem is not natural.
 \item[(b)] For the same reason as $q_*$ being trivial on reduced homology above, $i^*$
   will be trivial on reduced cohomology since there are no groups that are nonzero
-  for the same index.
+  for the same index for $S^N$ and $X$.
 
   However when it comes to reduced homology when $k=n$ the induced map $i_*$
   will map the generator of $\rH_n(S^n)=\bb{Z}$ to the generator of the reduced
