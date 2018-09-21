@@ -37,6 +37,8 @@
 \end{problem}
 
 \begin{proof}
+  We abbreviate $L_m(\ell_1,\ldots,\ell_n)$ as $L$.
+
   We know Hatcher that the cellular chain complex for a lens space
   $L_m(\ell_1,\ldots,l_n)$ is
   \[
@@ -62,7 +64,7 @@
     Thus the cohomology groups of the lens space with integer coefficients
     will be isomorphic to the homology groups with a switch from $k$ odd to $k$ even
     \[
-      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}) \cong  
+      H^k(L;\bb{Z}) \cong  
       \left\{
         \begin{array}{ll}
           \bb{Z}& k=0,2n-1\\
@@ -85,7 +87,7 @@
     kernel. Either way the cohomology will be zero. Thus the cohomology for the lens
     space with rational coefficients will be
     \[
-      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Q}) \cong  
+      H^k(L;\bb{Q}) \cong  
       \left\{
         \begin{array}{ll}
           \bb{Q} & k=2n-1,0\\
@@ -103,7 +105,7 @@
     Since the kernel is always $\bb{Z}_m$ and the image the identity we then have that
 
     \[
-      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}_m) \cong  
+      H^k(L;\bb{Z}_m) \cong  
       \left\{
         \begin{array}{ll}
           \bb{Z}_m & 0\leq k < 2n-1\\
@@ -122,10 +124,10 @@
     Then we need to consider the case where $p|m$ and when $p\nmid m$.
 
     When $p|m$ the map $\cdot m$ becomes the zero map. As such we end up
-    with cohomology analagous to the $\bb{Z}_m$ case
+    with cohomology analogous to the $\bb{Z}_m$ case
 
     \[
-      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}_p) \cong  
+      H^k(L;\bb{Z}_p) \cong  
       \left\{
         \begin{array}{ll}
           \bb{Z}_p & 0\leq k<2n-1\\
@@ -135,10 +137,10 @@
     \]
 
     However if $p\nmid m$. Then the map $\cdot m$ is invertible and as such an
-    isomorphism. This makes it analagous to the $\bb{Q}$ case
+    isomorphism. This makes it analogous to the $\bb{Q}$ case
 
     \[
-      H^k(L_m(\ell_1,\ldots,\ell_n);\bb{Z}_p) \cong  
+      H^k(L;\bb{Z}_p) \cong  
       \left\{
         \begin{array}{ll}
           \bb{Z}_p & k=0,2n-1\\
@@ -147,39 +149,53 @@
       \right.
     \]
   \end{itemize}
-
-  Now we check our work with the universal coefficient theorem. The
-  short exact sequence that we will be using is
-  \[
-    \xymatrix{
-      0 \ar[r] & \Ext(H_k(L),G) \ar[r] & H^k(L;G) \ar[r] & \Hom(H_k(L),G) \ar[r] & 0
-    }
-  \]
-
-  If $k=2n-1,0$ we get
-  \[
-    \xymatrix{
-      0 \ar[r] & \Ext(0,G)=0 \ar[r] & H^k(L;G) \ar[r] & \Hom(\bb{Z},G)=\bb{Z} \ar[r] & 0
-    }
-  \]
-  which provides $H^{2n-1}(L;G)\cong H^0(L;G)\cong G$ as expected.
-
-  Next if $0<k<2n-1$ and $k$ even we break into cases:
-  \begin{itemize}
-  \item[$\bb{Z}$:]
-  \item[$\bb{Q}$:]
-  \item[$\bb{Z}_m$:]
-  \item[$\bb{Z}_p$:]
-  \end{itemize}
-
-  Finally if $0<k<2n-1$ and $k$ odd we break into the same cases as before:
-  \begin{itemize}
-  \item[$\bb{Z}$:]
-  \item[$\bb{Q}$:]
-  \item[$\bb{Z}_m$:]
-  \item[$\bb{Z}_p$:]
-  \end{itemize}
 \end{proof}
+
+Now we check our work with the universal coefficient theorem. The
+short exact sequence that we will be using is
+\[
+  \xymatrix{
+    0 \ar[r] & \Ext(H_k(L),G) \ar[r] & H^k(L;G) \ar[r] & \Hom(H_k(L),G) \ar[r] & 0
+  }
+\]
+
+If $k=2n-1,0$ we get
+\[
+  \xymatrix{
+    0 \ar[r] & \Ext(0,G)\cong 0 \ar[r] & H^k(L;G) \ar[r] & \Hom(\bb{Z},G)\cong \bb{Z} \ar[r] & 0
+  }
+\]
+which provides $H^{2n-1}(L;G)\cong H^0(L;G)\cong G$ as expected.
+
+Next if $0<k<2n-1$ and $k$ even we start with
+\[
+  \xymatrix{
+    0 \ar[r] &pp \Ext(\bb{Z}_m,G)\ar[r] & H^k(L;G) \ar[r] & \Hom(0,G)\cong 0 \ar[r] & 0
+  }
+\]
+Then $\Ext(\bb{Z}_m,G)\cong H^k(L;G)$. Split into cases and we get
+\begin{itemize}
+\item[$\bb{Z}$:] $\Ext(\bb{Z}_m,\bb{Z})\cong\bb{Z}_m$.
+\item[$\bb{Q}$:] $\Ext(\bb{Z}_m,\bb{Q})\cong \bb{Q}/m\bb{Q}\cong 0$
+\item[$\bb{Z}_m$:] $\Ext(\bb{Z}_m,\bb{Z}_m)\cong \bb{Z}_m/(m\bb{Z}_m\cong 0)\cong \bb{Z}_m$
+\item[$\bb{Z}_p$:] When $p|m$ we get $\Ext(\bb{Z}_m,\bb{Z}_p)\cong \bb{Z}_p/(m\bb{Z}_p\cong 0)\cong \bb{Z}_p$
+  and when $p\nmid m$ we get $\Ext(\bb{Z}_m,\bb{Z}_p)\cong \bb{Z}_p/(m\bb{Z}_p\cong \bb{Z}_p)\cong 0$.
+\end{itemize}
+
+Finally if $0<k<2n-1$ and $k$ odd we start with
+\[
+  \xymatrix{
+    0 \ar[r] & \Ext(0,G)\cong 0\ar[r] & H^k(L;G) \ar[r] & \Hom(\bb{Z}_m,G)\cong 0 \ar[r] & 0      
+  }
+\]
+giving $H^k(L;G)\cong\Hom(\bb{Z}_m,G)$. Split into the same cases as above to get
+\begin{itemize}
+\item[$\bb{Z}$:] $\Hom(\bb{Z}_m,\bb{Z})\cong 0$
+\item[$\bb{Q}$:] $\Hom(\bb{Z}_m,\bb{Z})\cong 0$
+\item[$\bb{Z}_m$:] $\Hom(\bb{Z}_m,\bb{Z}_m)\cong \bb{Z}_m$
+\item[$\bb{Z}_p$:] As above if $p|m$ we get $\Hom(\bb{Z}_m,\bb{Z}_p)\cong \bb{Z}_p$
+  and otherwise if $p\nmid m$ then $\Hom(\bb{Z}_m,\bb{Z}_p)\cong 0$
+\end{itemize}
 
 \sk
 
@@ -219,8 +235,33 @@
     it will send the generator of the former to the generator of the latter. As
     such the map $q^*$ is not trivial on cohomology when $k=n$.
 
-    \textbf{Say why this shows the universal coefficient theorem does not split
-    naturally.}
+    Using the commutative diagram from pg. 196 of Hatcher we have
+    \[
+      \xymatrix{
+        0 \ar[r] & \Ext(H_n(X),\bb{Z}) \ar[r] & H^{n+1}(X) \ar[r] & \Hom(H_{n+1}(X),\bb{Z}) \ar[r] & 0\\
+        0 \ar[r] & \Ext(H_n(S^{n+1}),\bb{Z}) \ar[r] \ar[u]_{(q_*)^*} & H^{n+1}(S^{n+1}) \ar[r] \ar[u]_{q^*} & \Hom(H_{n+1}(X),\bb{Z}) \ar[r]\ar[u]_{(q_*)^*} & 0
+      }
+    \]
+
+    Substituting in we get
+    \[
+      \xymatrix{
+        0 \ar[r] & \bb{Z}_m \ar[r] & \bb{Z}_m \ar[r] & 0 \ar[r] & 0\\
+        0 \ar[r] & 0 \ar[r] \ar[u]_0& \bb{Z} \ar[r] \ar[u]_{q^*}& \bb{Z} \ar[r] \ar[u]_0 & 0\\
+      }
+    \]
+
+    From splitting we get a map from $0\rightarrow \bb{Z}_m$ and a map $\bb{Z}\rightarrow\bb{Z}$ going back. If
+    the splitting was natural this would give us commutativity in
+    \[
+      \xymatrix{
+        \bb{Z}_m & \ar[l] 0\\
+        \bb{Z} \ar[u]_{q^*} & \ar[l] \ar[u]_0 \bb{Z}\\
+      }
+    \]
+
+    However this is not the case. Thus the splitting for the universal coefficient
+    theorem is not natural.
 \item[(b)] For the same reason as $q_*$ being trivial on reduced homology above, $i^*$
   will be trivial on reduced cohomology since there are no groups that are nonzero
   for the same index.
