@@ -43,7 +43,7 @@
 
 \begin{problem}[3.2.2]
   Using the cup product
-  $H^k(X,A:R)\times H^\ell(X,B;R)\rightarrow H^{k+\ell}(X,A\cup B;R)$, show that
+  $H^k(X,A;R)\times H^\ell(X,B;R)\rightarrow H^{k+\ell}(X,A\cup B;R)$, show that
   if $X$ is the union of contractible open subsets $A$ and $B$, then all cup
   products of positive-dimensional classes in $H^*(X;R)$ are zero. This applies
   in particular if $X$ is a suspension. Generalize to the situation that $X$ is
@@ -52,7 +52,35 @@
 \end{problem}
 
 \begin{proof}
-  
+  First note that since $A$ is contractible we get an isomorphism
+  \[
+    \xymatrix{
+      0 \ar[r] & H^k(X,A;R) \ar[r] & H^n(X;R) \ar[r] & 0
+    }
+  \]
+  Similarly we also get an isomorphism with $H^k(X,B;R)$ and $H^k(X;R)$.
+
+  Using this with the naturality of the cup product we get a commutative
+  diagram
+  \[
+    \xymatrix{
+      H^k(X,A;R)\times H^\ell(X,B;R) \ar[r]^-\smile \ar[d]^{\cong }& H^{k+\ell}(X,A\cup B;R)\cong 0 \ar[d]\\
+      H^k(X;R)\times H^\ell(X;R) \ar[r]^-\smile & H^{k+l}(X;R)
+    }
+  \]
+  However since this map factors through zero it must be the case that
+  the cup product is zero for positive dimensions.
+
+  In the case where $X=\bigcup_i A_i$ we still have the same isomorphisms as before.
+  As such our new diagram is
+  \[
+    \xymatrix{
+      \prod_i H^{k_i}(X,A;R) \ar[r]^-{\smile} \ar[d]^{\cong}& H^{\Sigma_ik_i}(X,\bigcup A_i;R)\cong 0 \ar[d]\\
+      \prod_i H^{k_i}(X;R) \ar[r] & H^{\Sigma_i k_i}(X;R)
+    }
+  \]
+  which gives us zero on the cup product for positive dimensions via the same
+  reasoning as above.
 \end{proof}
 
 \sk
@@ -68,7 +96,25 @@
 \end{problem}
 
 \begin{proof}
-  
+  Recall that $H^*(\bb{C}P^n;\bb{Z})\cong\bb{Z}(\alpha)/(\alpha^{n+1})$ and that
+  $H^k(\bb{C}P^n;\bb{Z})$ is $\bb{Z}$ for even dimensions and zero otherwise. For
+  $f^*:H^2(\bb{C}P^n;\bb{Z})\rightarrow H^2(\bb{C}P^n;\bb{Z})$ this is an endomorphism on the integers.
+  As such it must be of the form $f^*(\alpha)=c\alpha$ for some $c\in\bb{Z}$. Moreover since
+  $f^*$ is also an endomorphism on the cohomology ring it must be that
+  $f^*(\alpha^m)=c^m\alpha^m$. Since the $\Ext$ term in the universal coefficient theorem
+  will be zero for $\bb{C}P^n$ we have that $f^*$ is the hom dual of $f_*$.
+  Since multiplication maps are unaffected by hom dual the Lefschetz number of
+  $f$ is
+  \[
+    \tau(f)= 1+c+\cdots+c^n
+  \]
+
+  The only possible rational roots of $\tau(f)$ are $\pm 1$. Since all the coefficients
+  are positive $1$ is not a root. If $n$ is even $-1$ cannot be as well. If
+  $n$ is odd and $f^*(\alpha)\neq-\alpha$ ($c\neq -1$), then $\tau(f)$ has no roots as well.
+
+  Therefore by the Lefschetz fixed point theorem the map $f$ has a fixed point if
+  $n$ is even or if $f(\alpha)\neq -\alpha$.
 \end{proof}
 
 \end{document}
