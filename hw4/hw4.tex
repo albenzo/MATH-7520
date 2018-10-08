@@ -12,7 +12,6 @@
 
 \newcommand{\sk}{\vskip 10mm}
 \newcommand{\bb}[1]{\mathbb{#1}}
-\newcommand{\ra}{\rightarrow}
 \newcommand{\rH}{\widetilde{H}}
 \DeclareMathOperator{\img}{Im}
 \DeclareMathOperator{\Ext}{Ext}
@@ -37,9 +36,40 @@
 
 Let $\alpha_i,\beta_i$ denote the first cohomology generators and
 let $\gamma_i$ denote the generator for the second cohomology group for the $i$th
-tori. in the wedge sum Note that since the homology groups of the torus are
-free that $\Ext$ will be zero and as such the cohomology groups are the hom duals
-of the homology groups.
+tori in the wedge sum. Also let $\gamma$ be the lone generator for $H^2(M_g)$.
+Note that since the homology groups of the torus are
+free that $\Ext(H_k(T^2),\bb{Z})$ will be zero and as such the cohomology groups are the hom duals
+of the homology groups. Let $a_i,b_i,c_i$ be the dual basis elements to $\alpha_i,\beta_i,$ and
+$\gamma_i$ respectively. The induced map $q_*:H^k(M_g)\rightarrow H^k(\bigvee_i T^2)$ will act on the basis elements of
+the homology groups as
+\[
+  q_*(a_i)=a_i,\quad q_*(b_9)=b_i,\quad q_*(c)=\sum_i c_i
+\]
+where $c$ is the lone generator of $H_2(M_g)$. By the universal coefficient theorem
+$q^*$ is the hom dual of $q_*$. As such we can deduce the values of $q^*$ as
+\[
+  q^*(\alpha_8)=\alpha_8,\quad q^*(\beta_i),\quad q^*(\gamma_i)= \gamma
+\]
+
+Since the cohomology ring of the wedge sum is the product of the cohomology rings
+we can determine the cup product structure using what we know of $\prod_i H^*(T^2)$ and
+$q^*$. The cup product structure of $\prod_i H^i(T^2)$ is
+\begin{align*}
+  \alpha_i\smile \beta_j &= 0 & i\neq j\\
+  \alpha_i\smile \beta_i &= \gamma_i\\
+  \beta_j\smile \alpha_j &= -\gamma_j\\
+  \beta_j\smile \alpha_i &= 0 & i\neq j\\
+\end{align*}
+
+Then using the quotient map we get
+\begin{align*}
+  q^*(\alpha_i)\smile q^*(\beta_j) &= q^*(\alpha_i\smile\beta_j) = 0 & i\neq j\\
+  q^*(\alpha_i)\smile q^*(\beta_i) &= q^*(\alpha_i\smile\beta_i) = \gamma_i\\
+  q^*(\beta_j)\smile q^*(\alpha_j) &= q^*(\beta_j\smile\alpha_j)= -\gamma_j\\
+  q^*(\beta_j)\smile q^*(\alpha_i) &= q^*(\beta_j\smile\alpha_i) = 0 & i\neq j\\
+\end{align*}
+
+Which gives us the full cup product structure for $H^*(M_g)$.
 
 \sk
 
@@ -111,12 +141,12 @@ of the homology groups.
     \tau(f)= 1+c+\cdots+c^n
   \]
 
-  The only possible rational roots of $\tau(f)$ are $\pm 1$. Since all the coefficients
-  are positive $1$ is not a root. If $n$ is even $-1$ cannot be as well. If
-  $n$ is odd and $f^*(\alpha)\neq-\alpha$ ($c\neq -1$), then $\tau(f)$ has no roots as well.
-
-  Therefore by the Lefschetz fixed point theorem the map $f$ has a fixed point if
-  $n$ is even or if $f(\alpha)\neq -\alpha$.
+  The only possible rational roots, and thus integer roots, of $\tau(f)$ are $\pm 1$.
+  Since all the coefficients are positive $1$ is not a root. If $n$ is even $-1$
+  cannot be a root as well since there are an odd number of terms.
+  If $n$ is odd and $f^*(\alpha)\neq-\alpha$ (i.e. $c\neq -1$), then $\tau(f)$ will have no roots.
+  Therefore by the Lefschetz fixed point theorem a map $f:\bb{C}P^n\rightarrow\bb{C}P^n$
+  has a fixed point if $n$ is even or if $n$ is odd and $f(\alpha)\neq -\alpha$.
 \end{proof}
 
 \end{document}
