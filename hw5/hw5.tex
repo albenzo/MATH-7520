@@ -44,7 +44,27 @@
 \end{problem}
 
 \begin{proof}
-  
+  \begin{enumerate}
+  \item[(a)] Suppose that $f:\bb{R}P^n\rightarrow\bb{R}P^m$ was non-trivial for the first
+    cohomology. The cup product structure for $\bb{R}P^k$ with $\bb{Z}_2$ coefficients
+    is $\bb{Z}_2[\alpha]/(\alpha^{k+1})$. As such $f$ induces a map on the cohomology rings
+    \[
+      f^*:\bb{Z}_2[\alpha]/(\alpha^{m+1})\rightarrow\bb{Z}_2[\beta]/(\beta^{n+1})
+    \]
+    wherein $f^*(\alpha)=\beta$ since the map is nontrivial in first cohomology. However
+    $\alpha^{m+1}=0$ which would imply that $f(\alpha^{m+1})=\beta^{m+1}=0$. However this is
+    a contradiction since $n>m$.
+  \item[(b)] Let $g:S^n\rightarrow S^{n-1}$ be the map as defined above. Then
+    this map induces a map $g':S^n\rightarrow\bb{R}P^{n-1}$ since $g(x)=-g(-x)$.
+    Then $g'$ induces a map $g'':\bb{R}P^n\rightarrow\bb{R}P^{n-1}$ as now $g'(x)=g'(-x)$.
+    On the cellular cochain complex $\bb{Z}_2$ coefficients the map $g''$
+    induces the identity map since it also does on the cellular chain complex (since $g$
+    will send a path between antipodal points on $S^n$ to a path between antipodal points
+    on $S^{n-1}$).
+    However since all the coboundary maps are zero the induces map on the cellular
+    cochains will induce the same map on the cohomology. However since $(g'')^*$ is
+    not trivial this contradicts part (a).
+  \end{enumerate}
 \end{proof}
 
 \sk
@@ -57,7 +77,23 @@
 \end{problem}
 
 \begin{proof}
-  
+  Using the cellular cochain complex for $\bb{R}P^\infty$ with $\bb{Z}_{2k}$
+  coefficients
+  \[
+    \xymatrix{
+      0 \ar[r] & \bb{Z}_{2k} \ar[r]^0 & \bb{Z}_{2k} \ar[r]^2 & \bb{Z}_{2k} \ar[r]^0 & \cdots
+    }
+  \]
+  we get the cohomology of $\bb{R}P^\infty$ with $\bb{Z}_{2k}$ coefficients is
+  \[
+    H^i(\bb{R}P^\infty;\bb{Z}_{2k})\cong 
+    \left\{
+      \begin{array}{ll}
+        \bb{Z}_{2k}& i=0\\
+        \bb{Z}_{2} & \text{otherwise}
+      \end{array}
+    \right.
+  \]
 \end{proof}
 
 \sk
@@ -71,7 +107,7 @@
   From Hatcher the cup product structure for $\bb{R}P^3$ with $\bb{Z}_2$ coefficients
   is
   \[
-    H^*(\bb{R}P^3;\bb{Z}_2)\cong \bb{Z}_2[\alpha,\beta]/(\alpha^4)\quad |\alpha|=1
+    H^*(\bb{R}P^3;\bb{Z}_2)\cong \bb{Z}_2[\alpha]/(\alpha^4)\quad |\alpha|=1
   \]
   and the cup product structure for $\bb{R}P^2\vee S^3$ with $\bb{Z}_2$ coefficients is
   \[
