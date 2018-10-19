@@ -68,7 +68,19 @@
 \end{problem}
 
 \begin{proof}
-  
+  From Hatcher the cup product structure for $\bb{R}P^3$ with $\bb{Z}_2$ coefficients
+  is
+  \[
+    H^*(\bb{R}P^3;\bb{Z}_2)\cong \bb{Z}_2[\alpha,\beta]/(\alpha^4)\quad |\alpha|=1
+  \]
+  and the cup product structure for $\bb{R}P^2\vee S^3$ with $\bb{Z}_2$ coefficients is
+  \[
+    H^*(\bb{R}P^2\vee S^3;\bb{Z}_2)\cong H^*(\bb{R}P^2;\bb{Z}_2)\times H^*(S^3;\bb{Z}_2)
+    \cong(\bb{Z}_2[\beta]/(\beta^3)\times\bb{Z}_2[\gamma]/(\gamma^2))/(\langle 1_\beta,1_\gamma\rangle)\quad |\beta|=1,|\gamma|=3
+  \]
+  The latter has an element, $\beta$, which when cubed is zero. However the former
+  has no such elements. Thus the two cohomology rings are not isomorphic
+  and therefore $\bb{R}P^3$ is not homotopy equivalent to $\bb{R}P^2\vee S^3$.
 \end{proof}
 
 \end{document}
