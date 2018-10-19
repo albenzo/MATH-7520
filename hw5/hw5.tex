@@ -94,7 +94,28 @@
       \end{array}
     \right.
   \]
+
+  Take the following commutative diagrams with the cellular cochains with
+  $\bb{Z}_{2k}$ and $\bb{Z}_2$ coefficients with the $\bb{Z}_{2k}\rightarrow\bb{Z}_2$
+  running between them.
+  \[
+    \xymatrix{
+      0 \ar[r] & \bb{Z}_{2k} \ar[r]^0 \ar[d]& \bb{Z}_{2k} \ar[r]^2 \ar[d]& \bb{Z}_{2k} \ar[r]^0 \ar[d]& \cdots\\
+      0 \ar[r] & \bb{Z}_{2} \ar[r]^0 & \bb{Z}_{2} \ar[r]^2 & \bb{Z}_{2} \ar[r]^0 & \cdots
+    }
+  \]
+
+  Similarly to the diagram on Hatcher pg. 222, this map will be injective on even
+  dimension. Since $H^2(\bb{R}P^\infty;\bb{Z}_{2k})\cong\bb{Z}_{2k}/2\bb{Z}_{2k}$ when we send
+  the generator for the cohomology ring in dimension 1, $\alpha$, it'll get sent to
+  $\alpha^2=k\beta$. Together this gives us that
+  \[
+    H^*(\bb{R}P^\infty;\bb{Z}_{2k})\cong \bb{Z}_{2k}[\alpha,\beta]/(2\alpha,2\beta,\alpha^2-k\beta)
+  \]
 \end{proof}
+
+Since $2\beta=0$ this effectively means that $\beta$ is redundant whenever $k$ is odd,
+but necessary if $k$ is even.
 
 \sk
 
