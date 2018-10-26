@@ -63,11 +63,11 @@
 Using Theorem 3.19 for the projective spaces, we get that the Poincar\'e
 polynomials for the spaces above are
 \begin{align*}
-  P(S^n) &= 1+t^n\\
-  P(\bb{R}P^n) &= \sum_0^n t^i\\
-  P(\bb{R}P^\infty) &= \sum_0^\infty t^n\\
-  P(\bb{C}P^n) &= \sum_0^n t^{2n}\\
-  P(\bb{C}P^\infty) &= \sum_0^\infty t^{2n}\\
+  p(S^n) &= 1+t^n\\
+  p(\bb{R}P^n) &= \sum_0^n t^i\\
+  p(\bb{R}P^\infty) &= \sum_0^\infty t^n\\
+  p(\bb{C}P^n) &= \sum_0^n t^{2n}\\
+  p(\bb{C}P^\infty) &= \sum_0^\infty t^{2n}\\
 \end{align*}
 
 \sk
@@ -93,7 +93,7 @@ polynomials for the spaces above are
   Kunn\"eth formula since finite CW complexes imply finitely generated cohomology
   groups and field coefficients remove torsion.
 
-  Since $\ord(z)=p^k$ we have that $\ord(q(z))=p^j$ where $j<k$. Since the bottom
+  Since $\ord(z)=p^k$ we have that $\ord(q(z))=p^j$ where $j\leq k$. Since the bottom
   groups are isomorphic and the fact that the quotient map $q_x\otimes q_y$ is surjective
   we can pull back $q(z)$ to $x\otimes y\in(q_x\otimes q_y)^{-1}(z)$. The order of $x\otimes y$ is
   $\ord(x\otimes y)=m p^j$. However this implies that $(x\otimes y)^m$ has order $p^j$ which
