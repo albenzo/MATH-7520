@@ -18,6 +18,7 @@
 \DeclareMathOperator{\img}{Im}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ord}{ord}
 
 \theoremstyle{remark}
 \newtheorem{problem}{Problem}
@@ -79,7 +80,27 @@ polynomials for the spaces above are
 \end{problem}
 
 \begin{proof}
-  
+  Suppose that $z\in H^*(X\times Y;\bb{Z})$ has order $p^k$. Let $q$ be a prime number
+  such that $q$ is relatively prime to the additive order of $z$. This will
+  ensure that $q(z)\neq 1$. Consider the commutative diagram
+  \[
+    \xymatrix{
+      H^*(X;\bb{Z})\otimes_{\bb{Z}} H^*(Y;\bb{Z}) \ar[r]^-\times \ar[d]^{q_x\otimes q_y}& H^*(X\times Y;\bb{Z}) \ar[d]^{ q}\\
+      H^*(X;\bb{Z}_q)\otimes_{\bb{Z}} H^*(Y;\bb{Z}_q) \ar[r]^-\times_-\cong & H^*(X\times Y;\bb{Z}_q)\\
+    }
+  \]
+  where $q$ is the quotient map. The bottom line is an isomorphism by the
+  Kunn\"eth formula since finite CW complexes imply finitely generated cohomology
+  groups and field coefficients remove torsion.
+
+  Since $\ord(z)=p^k$ we have that $\ord(q(z))=p^j$ where $j<k$. Since the bottom
+  groups are isomorphic and the fact that the quotient map $q_x\otimes q_y$ is surjective
+  we can pull back $q(z)$ to $x\otimes y\in(q_x\otimes q_y)^{-1}(z)$. The order of $x\otimes y$ is
+  $\ord(x\otimes y)=m p^j$. However this implies that $(x\otimes y)^m$ has order $p^j$ which
+  only holds if both the components of $(x\otimes y)^m$ has order dividing $p^m$.
+
+  Thus there is either an $x\in H^*(X;\bb{Z})$ or a $y\in H^*(Y;\bb{Z})$ that has
+  prime power order completing the proof.
 \end{proof}
 
 \sk
