@@ -14,6 +14,7 @@
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\rH}{\widetilde{H}}
+\newcommand{\wt}[1]{\widetilde{#1}}
 \DeclareMathOperator{\img}{Im}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Hom}{Hom}
@@ -29,7 +30,7 @@
 \begin{document}
 
 \begin{problem}[3.2.15]
-  For a fixed coefficient field $F$, define the \textbf{Pointcar\'e series}
+  For a fixed coefficient field $F$, define the \textbf{Poincar\'e series}
   of a space $X$ to be the formal power series $p(t)=\sum_ia_it^i$ where $a_i$
   is the dimension of $H^i(X;F)$ as a vector space over $F$, assuming this
   dimension is finite for all $i$. Show that $p(X\times Y)=p(X)p(Y)$. Compute
@@ -38,8 +39,35 @@
 \end{problem}
 
 \begin{proof}
-  
+  Since we are taking coefficients in a field $F$, there will be no
+  torsion on the cohomology groups. As such we can use the K\"unneth formula
+  \[
+    H^*(X\times Y;F)\cong H^*(X;F)\otimes_{F} H^*(Y;F)
+  \]
+  For a fixed $n$ this isomorphism gives
+  \[
+    H^n(X\times Y; F) \cong \bigoplus_{i+j=n}H^i(X;F)\otimes H^j(Y;F)
+  \]
+  Since the tensor product multiplies dimension this implies that
+  \[
+    \dim (H^n(X\times Y; F)) \cong \dim\left(\bigoplus_{i+j=n}H^i(X;F)\otimes H^j(Y;F)\right)=\sum_{i+j=n}\left(\dim H^i(X;F)\right) \left(\dim H^j(Y;F)\right)
+  \]
+  If we let $a_i=\dim (H^i(X;F))$ and $b_i=\dim (H^j(X;F))$ then using the above we get
+  \[
+    p(X\times Y)= \sum_{n=0}^\infty \sum_{i+j=n}a_i b_jt^n = \left(\sum_{i=0}^\infty a_it^i\right)\left(\sum_{j=0}^\infty b_j t^j\right)=p(X)p(Y)
+  \]
+  as desired.  
 \end{proof}
+
+Using Theorem 3.19 for the projective spaces, we get that the Poincar\'e
+polynomials for the spaces above are
+\begin{align*}
+  P(S^n) &= 1+t^n\\
+  P(\bb{R}P^n) &= \sum_0^n t^i\\
+  P(\bb{R}P^\infty) &= \sum_0^\infty t^n\\
+  P(\bb{C}P^n) &= \sum_0^n t^{2n}\\
+  P(\bb{C}P^\infty) &= \sum_0^\infty t^{2n}\\
+\end{align*}
 
 \sk
 
@@ -59,10 +87,16 @@
 \begin{problem}[3.3.3]
   Show that every covering space of an orientable manifold is an orientable
   manifold.
-\end{problem}
+\end{problem} 
 
 \begin{proof}
-  
+  Let $X$ be an orientable manifold and $p:\wt{X}\rightarrow X$ be a covering space.
+  Since $X$ is orientable we have a function $x\mapsto \mu_x\in H_n(M|X)$ satisfying
+  local consistency. We can then define an orientation on $\wt{X}$ via
+  $\wt{x}\mapsto \mu_{p(\wt{x})}$. This will satisfy the local consistency condition
+  since $\wt{X}$ is locally homeomorphic to $X$.
+
+  Therefore every covering space of an orientable manifold is orientable.
 \end{proof}
 
 \end{document}
