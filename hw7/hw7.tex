@@ -1,0 +1,103 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage[all,cmtip]{xy}
+
+\textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
+
+\newcommand{\sk}{\vskip 10mm}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\rH}{\widetilde{H}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+
+\theoremstyle{remark}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}[problem]
+
+
+\newtheorem{tpart}{}[problem]
+\newtheorem*{ppart}{}
+
+\begin{document}
+
+\begin{problem}[3.3.2]
+  Show that deleting a point from a manifold of dimension greater than $1$
+  does not affect the orientability of the manifold.
+\end{problem}
+
+\begin{proof}
+  Let $M$ be an $n$-manifold, $n>1$, and $y$ a point in $M$. Without loss of
+  generality assume that $M$ is connected as we could apply to following reasoning
+  to each connected component. From Hatcher Prop. 3.25 $M$ is orientable if,
+  and only if, the two-sheeted cover
+  \[
+    \wt{M}=\{\mu_x|\text{$x\in M$ and $\mu_x$ is a local orientation of $M$ at $x$}\}
+  \]
+  has two components.
+
+  Suppose that $M$ was orientable. Then $\wt{M}$ has two components. For
+  $\wt{M\setminus \{y\}}$ this will be identical to $\wt{M}$ but missing both points
+  covering $y$. However since the dimension is greater than one this will
+  not affect the number of components. As such $M\setminus\{y\}$ is orientable.
+
+  If $M$ is not orientable, then $\wt{M}$ will not have two components.
+  Removing the preimages of $y$ in $\wt{M\setminus\{y\}}$ will not change the number
+  of components from that of $\wt{M}$ due to the dimension.
+
+  Therefore, for an $n$-manifold with dimension greater than 1, removing a
+  single point does not affect the orientability of the manifold.
+\end{proof}
+
+\sk
+
+\begin{problem}[3.3.4]
+  Given a covering space action of a group $G$ on an orientable manifold $M$
+  by orientation-preserving homeomorphisms, show that $M/G$ is also orientable.
+\end{problem}
+
+\begin{proof}
+  Let $x\mapsto \mu_x$ be an orientation on $M$. Since the action of $G$ is
+  orientation preserving this implies that the orientation commutes with the
+  group action $\mu_x=\mu_{g\cdot x}$ for all $g\in G$. As such, the orientation on
+  $M$ induces an orientation on $M/G$. \textbf{This probably needs more.}
+\end{proof}
+
+\sk
+
+\begin{problem}[3.3.7]
+  For a map $f:M\rightarrow N$ between connected, closed, orientable $n$-manifolds
+  with fundamental classes $[M]$ and $[N]$, the \textit{degree} of $f$ is
+  defined to be the integer $d$ such that $f_*([M])=d[N]$, so the sign of the
+  degree depends on the choice of fundamental classes. Show that for any
+  connected closed orientable $n$-manifold $M$ there is a degree $1$ map
+  $M\rightarrow S^n$.
+\end{problem}
+
+\begin{proof}
+  Let $p$ be a point in a connected, closed, and oriented $n$-manifold $M$.
+  Then $p$ has an open neighborhood $U$ homeomorphic to $\bb{R}^n$. Let $q$
+  be a point in $S^n$. Define a map $f:M\rightarrow S^n$ by mapping $U$ homeomorphically
+  to $S^n\setminus\{q\}\cong \bb{R}^n$, preserving orientation,
+  and mapping $M\setminus U$ to $q$. This map is continuous since an open set in $S^n$
+  not containing $q$ will have preimage an open set in $U$ and a set containing
+  $q$ will have preimage with complement a closed neighborhood of $p$.
+
+  Thus $f$ is a continuous map from $M$ to $S^n$. Now we show that it has
+  degree $1$. Using local degree procedure from Hatcher pg. 136, and the fact
+  that we mapped $U$ homeomorphically to $S^n\setminus\{q\}$ preserving orientation, we
+  can deduce that the local degree of $f$ at $-q$ is $1$ as
+  $f^{-1}(-q)=\{p\}$ and the map $f_*:H_n(U,U\setminus p)\rightarrow H_n(S^n\setminus \{q\},S^n\setminus\{q,-q\})$ is
+  the identity map.
+\end{proof}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
