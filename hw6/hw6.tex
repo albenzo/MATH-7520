@@ -16,9 +16,11 @@
 \newcommand{\rH}{\widetilde{H}}
 \newcommand{\wt}[1]{\widetilde{#1}}
 \DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\rk}{rk}
 
 \theoremstyle{remark}
 \newtheorem{problem}{Problem}
@@ -79,28 +81,87 @@ polynomials for the spaces above are
   in various fields.]
 \end{problem}
 
-\begin{proof}
-  Suppose that $z\in H^*(X\times Y;\bb{Z})$ has order $p^k$. Let $q$ be a prime number
-  such that $q$ is relatively prime to the additive order of $z$. This will
-  ensure that $q(z)\neq 1$. Consider the commutative diagram
+\begin{proof}[Proof (Revised):]
+  Given a finitely generated abelian group $G$ define $\rk_p(G)$ to be
+  the number of occurences of the prime $p$ in the primary decomposition
+  $G\cong \bb{Z}^r\bigoplus_{p,k}\bb{Z}_{p^k}$.
+
+  From the Universal Coefficient theorem, if the cohomology groups are
+  finitely generated, we get
+  \begin{align*}
+    H^k(X;\bb{Z})&\cong\Tor(H_{k-1}(X))\oplus\bb{Z}^{\rk(H_k(X))}\\
+    H^k(Y;\bb{Z})&\cong\Tor(H_{k-1}(Y))\oplus\bb{Z}^{\rk(H_k(Y))}\\
+    H^k(X\times Y;\bb{Z})&\cong\Tor(H_{k-1}(X\times Y))\oplus\bb{Z}^{\rk(H_k(X\times Y))}\\
+  \end{align*}
+
+  The values for $\Hom$ and $Ext$ with $\bb{Q}$ and $\bb{Z}_p$ are
   \[
-    \xymatrix{
-      H^*(X;\bb{Z})\otimes_{\bb{Z}} H^*(Y;\bb{Z}) \ar[r]^-\times \ar[d]^{q_x\otimes q_y}& H^*(X\times Y;\bb{Z}) \ar[d]^{ q}\\
-      H^*(X;\bb{Z}_q)\otimes_{\bb{Z}} H^*(Y;\bb{Z}_q) \ar[r]^-\times_-\cong & H^*(X\times Y;\bb{Z}_q)\\
-    }
+    \begin{array}{ll}
+      \Ext(H_{k-1},\bb{Q})\cong 0 & \Hom(H_i,\bb{Q})\cong \bb{Q}^{\rk(H_k)}\\
+      \Ext(H_{k-1},\bb{Z}_p)\cong \bb{Z}_p^{\rk_p(H_{k-1})} & \Hom(H_i,\bb{Q})\cong \bb{Q}^{\rk(H_k)+\rk_p(H_k)}\\
+    \end{array}
   \]
-  where $q$ is the quotient map. The bottom line is an isomorphism by the
-  Kunn\"eth formula since finite CW complexes imply finitely generated cohomology
-  groups and field coefficients remove torsion.
 
-  Since $\ord(z)=p^k$ we have that $\ord(q(z))=p^j$ where $j\leq k$. Since the bottom
-  groups are isomorphic and the fact that the quotient map $q_x\otimes q_y$ is surjective
-  we can pull back $q(z)$ to $x\otimes y\in(q_x\otimes q_y)^{-1}(z)$. The order of $x\otimes y$ is
-  $\ord(x\otimes y)=m p^j$. However this implies that $(x\otimes y)^m$ has order $p^j$ which
-  only holds if both the components of $(x\otimes y)^m$ has order dividing $p^m$.
+  Using the universal coefficient theorem once more we get
+  \[
+    \begin{array}{ll}
+      H^k(X;\bb{Q})\cong\bb{Q}^{\rk(H_i(X))} & H^k(X;\bb{Z}_p)\cong\bb{Z}_p^{\rk(H_k(X))+\rk_p(H_k(X))+\rk_p(H_{k-1}(X))}\\
+      H^k(Y;\bb{Q})\cong\bb{Q}^{\rk(H_i(Y))} & H^k(Y;\bb{Z}_p)\cong\bb{Z}_p^{\rk(H_k(Y))+\rk_p(H_k(Y))+\rk_p(H_{k-1}(Y))}\\
+      H^k(X\times Y;\bb{Q})\cong\bb{Q}^{\rk(H_i(X\times Y))} & H^k(X\times Y;\bb{Z}_p)\cong\bb{Z}_p^{\rk(H_k(X\times Y))+\rk_p(H_k(X\times Y))+\rk_p(H_{k-1}(X\times Y))}\\
+    \end{array}
+  \]
 
-  Thus there is either an $x\in H^*(X;\bb{Z})$ or a $y\in H^*(Y;\bb{Z})$ that has
-  prime power order completing the proof.
+  Since $X,Y$ are finite CW complexes and we are working with
+  field coefficients we can use the Kunn\"eth theorem to get
+  \begin{align*}
+    H^*(X\times Y;\bb{Q})&\cong H^*(X;\bb{Q})\otimes_{\bb{Z}}H^*(Y;\bb{Q})\\
+    H^k(X\times Y;\bb{Q})&\cong \bigoplus_{i+j=k} H^i(X;\bb{Q})\otimes H^j(Y;\bb{Q})\\
+    \bb{Q}^{\rk(H_k(X\times Y))}&\cong\bigoplus_{i+j=k} \bb{Q}^{\rk(H_i(X))\rk(H_j(X))}
+  \end{align*}
+  Which gives the equality
+  \[
+    \rk(H_k(X\times Y))=\sum_{i+j=k} \rk(H_i(X))\rk(H_j(X))
+  \]
+  If we repeat the process with $\bb{Z}_p$ coefficients we get the equality
+  \begin{align*}
+    \rk(H_i(X\times Y))+\rk_p(H_i(X\times Y))+\rk_p(H_{i-1}(X\times Y)) = \sum_{i+j=k}&(\rk(H_k(X))+\rk_p(H_k(X))+\rk_p(H_{k-1}(X)))\\
+    \cdot&(\rk(H_k(Y))+\rk_p(H_k(Y))+\rk_p(H_{k-1}(Y)))
+  \end{align*}
+
+  Now we begin the proof proper. Assume that $H^*(X;\bb{Z})$ and $H^*(Y;\bb{Z})$
+  have no elements of order $p^k$. Since the torsion of the $k$th cohomology
+  group comes the torsion of the $(k-1)$ homology group it is clear that for
+  a space $Z$ that the cohomology ring has no prime power order elements if,
+  and only if, $\rk_p(H_k(Z))=0$ for all $k$. As such our assumption is equivalent
+  to $\rk_p(H_k(X))=\rk_p(H_k(Y))=0$ for all $k$.
+
+  We proceed to show that $\rk_p(H_k(X\times Y))=0$ by induction. We start with the
+  inductive case. Using the equality from $\bb{Z}_p$ coefficients and placing
+  zeros where appropriate we get
+  \[
+    \rk(H_i(X\times Y))+\rk_p(H_i(X\times Y)) = \sum_{i+j=k}\rk(H_k(X)\rk(H_k(Y))
+  \]
+  
+  Then subtracting the equality from the $\bb{Q}$ coefficients to cancel the first
+  terms we get
+  \[
+    \rk_p(H_k(X\times Y))) = 0
+  \]
+  which completes the inductive case.
+
+  If $k=0$ we still have
+  \[
+    \rk(H_0(X\times Y))+\rk_p(H_0(X\times Y))+\rk_p(H_{-1}(X\times Y)) = \rk(H_0(X))\rk(H_0(Y))
+  \]
+  
+  However since $H_{-1}(X\times Y)\cong 0$ we get that
+  \[
+    \rk_p(H_0(X\times Y))=0
+  \]
+
+  This completes the proof that $\rk_P(H_k(X\times Y))=0$ for all $k$ and
+  as such we have that $H^*(X\times Y;\bb{Z})$ has no elements of power of $p$
+  order.
 \end{proof}
 
 \sk
