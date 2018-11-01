@@ -35,7 +35,7 @@
 \end{problem}
 
 \begin{proof}
-  Let $M$ be an $n$-manifold, $n>1$, and $y$ a point in $M$. Without loss of
+  Let $M$ be an $n$-manifold, $n>1$, and let $y$ be a point in $M$. Without loss of
   generality assume that $M$ is connected as we could apply to following reasoning
   to each connected component. From Hatcher Prop. 3.25 $M$ is orientable if,
   and only if, the two-sheeted cover
@@ -47,11 +47,13 @@
   Suppose that $M$ was orientable. Then $\wt{M}$ has two components. For
   $\wt{M\setminus \{y\}}$ this will be identical to $\wt{M}$ but missing both points
   covering $y$. However since the dimension is greater than one this will
-  not affect the number of components. As such $M\setminus\{y\}$ is orientable.
+  not affect the number of components. As such $\wt{M\setminus \{y\}}$ has two components
+  which implies that $M\setminus\{y\}$ is orientable.
 
   If $M$ is not orientable, then $\wt{M}$ will not have two components.
   Removing the preimages of $y$ in $\wt{M\setminus\{y\}}$ will not change the number
-  of components from that of $\wt{M}$ due to the dimension.
+  of components from that of $\wt{M}$ due to the dimension. Thus $M\setminus \{y\}$
+  is not orientable.
 
   Therefore, for an $n$-manifold with dimension greater than 1, removing a
   single point does not affect the orientability of the manifold.
@@ -65,10 +67,18 @@
 \end{problem}
 
 \begin{proof}
-  Let $x\mapsto \mu_x$ be an orientation on $M$. Since the action of $G$ is
-  orientation preserving this implies that the orientation commutes with the
-  group action $\mu_x=\mu_{g\cdot x}$ for all $g\in G$. As such, the orientation on
-  $M$ induces an orientation on $M/G$. \textbf{This probably needs more.}
+  To start let $\mathcal{O}$ be a set of representatives for the
+  orbits in $M$ from $G$. Choose an orientation for $M$ such that
+  for $x\in \mathcal{O}$ if $x\mapsto\mu_x$ then $g\cdot x\mapsto \mu_{g\cdot x}$ for all $g\in G$
+  and we satisfy local consistency. We can do this since the cation of $G$
+  is orientation preserving and for each point in the orbit have disjoint
+  open neighborhoods.
+
+  From here we can define an orientation on $M/G$ by using the points
+  $x\in\mathcal{O}$ and sending them $x\mapsto \mu_x$. This is well defined since
+  we were consistent in choice for all points in the orbit and we inherit
+  local consistency for the same reason. Thus $M/G$ has an orientation
+  and as such is orientable.
 \end{proof}
 
 \sk
@@ -96,7 +106,8 @@
   that we mapped $U$ homeomorphically to $S^n\setminus\{q\}$ preserving orientation, we
   can deduce that the local degree of $f$ at $-q$ is $1$ as
   $f^{-1}(-q)=\{p\}$ and the map $f_*:H_n(U,U\setminus p)\rightarrow H_n(S^n\setminus \{q\},S^n\setminus\{q,-q\})$ is
-  the identity map.
+  the identity map. Since $p$ is the only point in the preimage of $-q$ the
+  degree of $f$ is exactly 1.
 \end{proof}
 
 \end{document}
