@@ -39,7 +39,19 @@
 \end{problem}
 
 \begin{proof}
-  
+  Let $y\in B$ and $\{x_1,\ldots,x_m\}=f^{-1}(y)$ where $x_i\in B_i$. Note that there must
+  be finitely many $B_i$s or the sum in the problem is not well defined. We then
+  have the following adaption of the commutative diagram from the proof of Prop. 2.30 in Hatcher
+  \[
+    \xymatrix{
+      & H_n(B_i,B_i\setminus x_i) \ar[r]^{f_*} \ar[dl]^\cong \ar[d]^{k_i}& H_n(B,B\setminus y) \ar[d]^{\cong}\\
+      H_n(M,M\setminus x_i) & H_n(M,M\setminus f^{-1}(y)) \ar[l]^{p_i} \ar[r]^{f_*} & H_n(N,N\setminus y)\\
+      & H_n(M) \ar[ul]^{\cong} \ar[u]^j \ar[r]^{f_*} & H_n(N) \ar[u]^\cong \\
+    }
+  \]
+  As in the proposition the upper two arrows come from excision. We will now
+  show that the lower two arrows marked as isomorphisms are actually isomorphisms.
+  \textbf{Insert proof here}.
 \end{proof}
 
 \sk
@@ -50,7 +62,22 @@
 \end{problem}
 
 \begin{proof}
-  
+  Since covering space projections are local homeomorphisms we can apply the previous
+  problem to this by considering a point $y\in N$ and its $p$-preimages. As such
+  it will suffice to show that the local degree of each point in $f^{-1}(y)$
+  agrees.
+
+  Suppose that not all of the local degrees agree for some subset of $N$. Then
+  partition $M$ into $M_+$ and $M_-$ denoting the points of $M$ where $f$ preserves
+  and reverses local orientation respectively. It's clear from the definition
+  that $M_+\cap M_-=\emptyset$. Moreover both $M_+$ and $M_-$ are open as given a point $x\in M$
+  $f(x)$ has an open neighborhood $U$ that is oriented and each disjoint sheet in
+  $f^{-1}(U)$ must either have orientation preserved or reversed. Thus $M_+$ and
+  $M_-$ form a partition of $M$ which contradicts our assumption that $M$ was
+  connected.
+
+  Therefore given a point $y\in N$ the local degree must be $\pm p$ and by the
+  previous problem the degree of $f$ is then $\pm p$.
 \end{proof}
 
 \sk
