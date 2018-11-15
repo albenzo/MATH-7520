@@ -92,7 +92,25 @@
 \end{problem}
 
 \begin{proof}
+  Let $\wt{N}$ be the covering space corresponding to the subgroup
+  $\img f_* \subset\pi_1(N,*)$ with covering map $p$. Then we can lift $f$
+  to $\wt{f}:M\rightarrow\wt{N}$. Now since degree is multiplicative under composition
+  and covering spaces are manifolds we have that $\deg f=\deg \wt{f}\cdot \deg p$.
+
+  The case where $\wt{N}$ is an infinite sheeted cover cannot occur since
+  the degree of $f$ is $1$ and this would violate of $\deg f=\deg\wt{f}\cdot\deg p$
+  when $\deg\wt{f}\neq 0$. Moreover if $\deg \wt{f}$ was zero this would violate
+  the fact that on the $n$th homology $f_*=p_*\circ \wt{f}_*$. As such $\wt{N}$
+  cannot be infinite sheeted.
   
+  In the case where $\wt{f}$ has a finite number of sheets we know from the previous
+  problem that the degree is the number of sheets. Using the same degree relation
+  and the fact that degrees are integers the only possibilities when $\deg f=1$
+  is that $\deg\wt{f}=\deg p=\pm 1$. However this also implies that $\wt{N}$ is
+  a one-sheeted cover and as such $\wt{N}$ is homeomorphic to $N$. From this we
+  can conclude that $\img f_*=\pi_1(N,*)$ and that $f_*:\pi_1(M,*)\rightarrow\pi_1(N,*)$ must be
+  surjective. This also implies that the induced map $f_*$ on the $1$st homology
+  is surjective as $H_1$ is the abelianization of $\pi_1$.
 \end{proof}
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
