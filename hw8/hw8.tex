@@ -49,9 +49,13 @@
       & H_n(M) \ar[ul]^{\cong} \ar[u]^j \ar[r]^{f_*} & H_n(N) \ar[u]^\cong \\
     }
   \]
-  As in the proposition the upper two arrows come from excision. We will now
-  show that the lower two arrows marked as isomorphisms are actually isomorphisms.
-  \textbf{Insert proof here}.
+  As in the proposition the upper two arrows come from excision. The lower
+  two isomorphisms are isomorphisms by Theorem 3.26 and come from the LES of the
+  pair.
+
+  Since this diagram commutes and is identical to the one used to prove Prop. 2.30
+  except with $M$ and $N$ instead of $S^n$s we can conclude from the proof of prop. 2.30
+  that $\deg f= \sum_i \epsilon_i$.
 \end{proof}
 
 \sk
@@ -98,10 +102,8 @@
   and covering spaces are manifolds we have that $\deg f=\deg \wt{f}\cdot \deg p$.
 
   The case where $\wt{N}$ is an infinite sheeted cover cannot occur since
-  the degree of $f$ is $1$ and this would violate of $\deg f=\deg\wt{f}\cdot\deg p$
-  when $\deg\wt{f}\neq 0$. Moreover if $\deg \wt{f}$ was zero this would violate
-  the fact that on the $n$th homology $f_*=p_*\circ \wt{f}_*$. As such $\wt{N}$
-  cannot be infinite sheeted.
+  as $\wt{N}$ would not be compact forcing the isomorphism $f_*:H_n(M)\rightarrow H_n(N)$
+  to factor through $H_n(\wt{N})\cong 0$.
   
   In the case where $\wt{f}$ has a finite number of sheets we know from the previous
   problem that the degree is the number of sheets. Using the same degree relation
