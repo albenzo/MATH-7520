@@ -135,14 +135,23 @@
 \end{problem}
 
 \begin{proof}
-  Let $M$ be a compact $n$-manifold with boundary $\partial M$. Suppose that
-  there was a retract of $M$ onto its boundary. Then the map induced
-  by inclusion $i_*$ is injective. The LES of the pair gives us
+  Let $M$ be a compact $n$-manifold with boundary $\partial M$. Let us also assume
+  that $M$ is connected. Suppose that there does exist a retract of $M$ onto $\partial M$.
+  This would imply that the inclusion map on homology, $i_*$, is injective.
+  The LES of the pair in homology with $\bb{Z}_2$ coefficients gives us
   \[
     \xymatrix{
-      0 \ar[r] & 
+      0 \ar[r] & H_n(M;\bb{Z}_2) \ar[r] & H_n(M,\partial M;\bb{Z}_2)\ar[r]^{\partial_*} & H_{n-1}(\partial M;\bb{Z}_2) \ar[r]^{i_*} & H_{n-1}(M;\bb{Z}_2)\ar[r] &\cdots
     }
   \]
+
+  Since $i_*$ is injective this implies that $\partial_*$ must be the zero map.
+  By Lefschetz duality $H_n(M;\bb{Z}_2)\cong H^0(M,\partial M;\bb{Z}_2)\cong 0$. This implies
+  that $H_n(M,\partial M;\bb{Z}_2)\cong 0$. However, also by Lefschetz duality, we have
+  $H_n(M,\partial M;\bb{Z}_2)\cong H^0(M;\bb{Z}_2)\cong \bb{Z}_2$. Which gives us a contradiction.
+
+  If $M$ is not connected then apply the above proof to a connected component
+  with nonzero boundary to get the same contradiction.
 \end{proof}
 
 \sk
