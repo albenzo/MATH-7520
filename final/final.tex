@@ -35,7 +35,19 @@
 \end{problem}
 
 \begin{proof}
-  
+  We construct a tear drop space shown below as the quotient
+  \[
+    (0,1] \times\{0,1\}/\sim
+  \]
+  where $(x,0)\sim(x,1)$ if $x<\frac{1}{2}$ and $(1,0)\sim (1,1)$. Each
+  point in this space has a neighborhood homeomorphic to $\bb{R}$ since
+  we had $x<\frac{1}{2}$ instead of $x\leq\frac{1}{2}$ in the relation.
+  The left chunk is homeomorphic to an open interval, as is the right chunk.
+  The two points $(1/2,0)$ and $(1/2,1)$ also have open neighborhoods
+  homeomorphic to $\bb{R}$ although they cannot be separated.
+
+  The picture below demonstrates the nonorientability of the space.
+  \vskip1in
 \end{proof}
 
 \sk
@@ -46,7 +58,19 @@
 \end{problem}
 
 \begin{proof}
-  
+  Suppose that $g\geq h$. Decompose $M_g$ as $M_h\#M_{g-h}$ where
+  $\#$ is the connected sum. Then map the $M_h$ component of $M_g$
+  with an orientation preserving homeomorphism to $M_h$ and map
+  $M_{g-h}$ to a point. This will be a degree 1 map by local degree
+  of any point aside from the one that $M_{g-h}$ is sent to.
+
+  On the other hand suppose that $g< h$ and there existed
+  a degree $1$ map $M_g\rightarrow M_h$. Then by one of the problems
+  from the last homework we would have a surjective map on the
+  first homologies $\bb{Z}^{2g}\rightarrow \bb{Z}^{2h}$. However this is a
+  contradiction since $g<h$.
+
+  Therefore a degree 1 map only exists if $g\geq h$.
 \end{proof}
 
 \sk
@@ -83,7 +107,11 @@
 \end{problem}
 
 \begin{proof}
-  
+  A $0$-cochain is a cocycle if it is constant on each
+  path component. So if $\varphi\in\ker\delta:\Delta_c^0(X;G)\rightarrow\Delta_c^1(X;G)$ then it must be a constant
+  function since $X$ is path connected. However since $\varphi$ has compact
+  support and $X$ is non-compact it must be that $\varphi\equiv 0$. Since
+  $\Delta_c^0(X;G)\cong H_c^0(X;G)$ it follows that $H_c^0(X;G)\cong 0$.
 \end{proof}
 
 \sk
@@ -94,7 +122,10 @@
 \end{problem}
 
 \begin{proof}
-  
+  By Poincar\'e duality we have that $H_k(M;\bb{Z})\cong H^k(M;\bb{Z})$.
+  By 3.3 from Hatcher $H^k$ gets its free component form $H_k(M;\bb{Z})$ and
+  its torsion component from $H_{k-1}(M;\bb{Z})$. Since $H_{k-1}(M;\bb{Z})$ is
+  torsion free, so to is $H_k(M;\bb{Z})$.
 \end{proof}
 
 \sk
@@ -104,7 +135,14 @@
 \end{problem}
 
 \begin{proof}
-  
+  Let $M$ be a compact $n$-manifold with boundary $\partial M$. Suppose that
+  there was a retract of $M$ onto its boundary. Then the map induced
+  by inclusion $i_*$ is injective. The LES of the pair gives us
+  \[
+    \xymatrix{
+      0 \ar[r] & 
+    }
+  \]
 \end{proof}
 
 \sk
@@ -115,10 +153,26 @@
 \end{problem}
 
 \begin{proof}
-  
+  Since $M$ is contractible $H_i(M)\cong 0$ for $i>0$. The the LES of the pair in
+  homology gives an isomorphism
+  \[
+    \xymatrix{
+      0 \ar[r] & H_i(M,\partial M) \ar[r] & H_{i-1}(\partial M) \ar[r] & 0
+    }
+  \]
+  By Lefschetz duality $H_i(M,\partial M)\cong H^{n-i}(M)$. These two isomorphisms together
+  along with the fact that $H^0(M)\cong \bb{Z}$ gives us that
+  \[
+    H_i(\partial M) \cong
+    \left\{
+      \begin{array}{lr}
+        \bb{Z} & i=n-1,0\\
+        0 & \text{otherwise}
+      \end{array}
+    \right.
+  \]
+  Which makes $\partial M$ a homology $(n-1)$-sphere.
 \end{proof}
-
-\sk
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
