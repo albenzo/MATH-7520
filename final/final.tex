@@ -7,6 +7,9 @@
 \usepackage{listings}
 \usepackage{enumerate}
 \usepackage[all,cmtip]{xy}
+\usepackage{graphicx}
+
+\graphicspath{{images/}}
 
 \textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
 
@@ -47,7 +50,9 @@
   homeomorphic to $\bb{R}$ although they cannot be separated.
 
   The picture below demonstrates the nonorientability of the space.
-  \vskip1in
+  \begin{center}
+    \includegraphics{tears}  
+  \end{center}
 \end{proof}
 
 \sk
@@ -123,9 +128,9 @@
 
 \begin{proof}
   By Poincar\'e duality we have that $H_k(M;\bb{Z})\cong H^k(M;\bb{Z})$.
-  By 3.3 from Hatcher $H^k$ gets its free component form $H_k(M;\bb{Z})$ and
+  By 3.3 from Hatcher $H^k$ gets its free component from $H_k(M;\bb{Z})$ and
   its torsion component from $H_{k-1}(M;\bb{Z})$. Since $H_{k-1}(M;\bb{Z})$ is
-  torsion free, so to is $H_k(M;\bb{Z})$.
+  torsion free, $H_k(M;\bb{Z})$ is torsion free as well.
 \end{proof}
 
 \sk
@@ -146,7 +151,8 @@
   \]
 
   Since $i_*$ is injective this implies that $\partial_*$ must be the zero map.
-  By Lefschetz duality $H_n(M;\bb{Z}_2)\cong H^0(M,\partial M;\bb{Z}_2)\cong 0$. This implies
+  By Lefschetz duality $H_n(M;\bb{Z}_2)\cong H^0(M,\partial M;\bb{Z}_2)\cong 0$. This, along with
+  $\partial_*$implies
   that $H_n(M,\partial M;\bb{Z}_2)\cong 0$. However, also by Lefschetz duality, we have
   $H_n(M,\partial M;\bb{Z}_2)\cong H^0(M;\bb{Z}_2)\cong \bb{Z}_2$. Which gives us a contradiction.
 
